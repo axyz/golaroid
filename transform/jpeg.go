@@ -6,8 +6,12 @@ import (
 	"gopkg.in/gographics/imagick.v2/imagick"
 )
 
-func Strip(data []byte, opts map[string]interface{}) ([]byte, error) {
-	fmt.Println("TODO: stripping...")
+func Jpeg(data []byte, opts map[string]interface{}) ([]byte, error) {
+	quality, ok := opts["quality"].(int)
+	if !ok {
+		quality = 85
+	}
+	fmt.Println("TODO: compressing to jpeg...")
 
 	imagick.Initialize()
 	defer imagick.Terminate()
@@ -16,7 +20,7 @@ func Strip(data []byte, opts map[string]interface{}) ([]byte, error) {
 
 	mw.ReadImageBlob(data)
 
-	mw.StripImage()
+	mw.SetImageCompressionQuality(uint(quality))
 	output := mw.GetImageBlob()
 
 	return output, nil
