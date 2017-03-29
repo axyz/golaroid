@@ -9,7 +9,6 @@ import (
 
 func Local(variant string, path string, data []byte, opts map[string]interface{}) error {
 	folder := opts["folder"].(string)
-	fmt.Println("TODO: writing to " + path)
 	dst := filepath.Join(folder, variant, path)
 	dirError := os.MkdirAll(filepath.Dir(dst), os.ModePerm)
 	if dirError != nil {

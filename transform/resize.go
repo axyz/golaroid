@@ -1,7 +1,6 @@
 package transform
 
 import (
-	"fmt"
 	"math"
 
 	"gopkg.in/gographics/imagick.v2/imagick"
@@ -168,8 +167,6 @@ func Resize(data []byte, opts map[string]interface{}) ([]byte, error) {
 		multistep = false
 	}
 
-	fmt.Println("TODO: resizing...")
-	fmt.Printf("%+v\n", opts)
 	imagick.Initialize()
 	defer imagick.Terminate()
 

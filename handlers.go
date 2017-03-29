@@ -25,6 +25,7 @@ func transformMediaItem(
 
 	result := data
 
+	// serially apply all the transformers to the original binary data
 	for _, t := range ts {
 		fmt.Println("TODO: apply transformation: " + t.Name)
 		d, err := o.Transformers[t.Name](result, t.Options)
@@ -45,6 +46,8 @@ func writeMedia(
 	path string,
 	ws outputWriters) error {
 
+	// write data using all the defined writers
+	// TODO: writes should run in parallel
 	for _, w := range ws {
 		err := o.Writers[w.Name](variantName, path, data, w.Options)
 		if err != nil {
@@ -113,6 +116,7 @@ func createHandler(o Options, c *EntityConfig) http.HandlerFunc {
 			w.Header().Set("Content-Type", "image/jpeg")
 			w.Write(tm)
 		default:
+			// method not allowed
 			w.WriteHeader(405)
 		}
 	}

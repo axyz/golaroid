@@ -1,14 +1,10 @@
 package transform
 
 import (
-	"fmt"
-
 	"gopkg.in/gographics/imagick.v2/imagick"
 )
 
 func Strip(data []byte, opts map[string]interface{}) ([]byte, error) {
-	fmt.Println("TODO: stripping...")
-
 	imagick.Initialize()
 	defer imagick.Terminate()
 

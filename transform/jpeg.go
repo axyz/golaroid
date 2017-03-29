@@ -1,8 +1,6 @@
 package transform
 
 import (
-	"fmt"
-
 	"gopkg.in/gographics/imagick.v2/imagick"
 )
 
@@ -11,7 +9,6 @@ func Jpeg(data []byte, opts map[string]interface{}) ([]byte, error) {
 	if !ok {
 		quality = 85
 	}
-	fmt.Println("TODO: compressing to jpeg...")
 
 	imagick.Initialize()
 	defer imagick.Terminate()
